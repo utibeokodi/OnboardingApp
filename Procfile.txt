@@ -1,1 +1,0 @@
-web: gunicorn OnboardingApp.wsgi --log-level=info --log-file -
