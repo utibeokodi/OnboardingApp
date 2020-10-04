@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import dotenv
 import dj_database_url
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -148,8 +149,7 @@ CORS_ORIGIN_WHITELIST = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_HEADERS = ('content-disposition', 'accept-encoding',
-                      'content-type', 'accept', 'origin', 'authorization')
+CORS_ALLOW_HEADERS = default_headers + ('cache-control',)
 
 EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 
