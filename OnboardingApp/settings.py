@@ -142,8 +142,11 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 #list will contain the actual frontend urls that will be accessing this endpoint
 CORS_ORIGIN_WHITELIST = [
        'http://localhost:3000',
-       'https://web.postman.co'
+       'https://web.postman.co',
+       '*'
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 
