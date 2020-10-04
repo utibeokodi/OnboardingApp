@@ -1,1 +1,1 @@
-web: gunicorn YOURSITE.wsgi --log-level=info --log-file -
+web: gunicorn OnboardingApp.wsgi --log-level=info --log-file -
