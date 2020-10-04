@@ -21,7 +21,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/register', views.UserCreate.as_view()),
-    path('api/login', views.LoginView.as_view()),
-    path('api/reset', views.ResetPassword.as_view()),
+    path('api/v1/register', views.UserCreate.as_view()),
+    path('api/v1/login', views.LoginView.as_view()),
+    path('api/v1/reset', views.ResetPassword.as_view()),
 ]

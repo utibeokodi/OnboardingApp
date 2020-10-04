@@ -16,6 +16,8 @@ from rest_framework.authentication import TokenAuthentication
 import string
 import secrets
 from django.core.mail import EmailMessage
+from datetime import datetime
+from datetime import timedelta
 
 #view for registration of users
 class UserCreate(generics.CreateAPIView):
@@ -27,6 +29,7 @@ class UserCreate(generics.CreateAPIView):
 		if serializer.is_valid():
 			user = serializer.save()
 			user.is_active = True
+			user.save()
 			if user:
 				return Response({'data':'Your Account has been created Succesfully'}, status = status.HTTP_201_CREATED)
 		else:
@@ -71,16 +74,16 @@ class ResetPassword(generics.CreateAPIView):
 			user.set_password(password)
 			user.save()
 			body = """
-			<p>Hello %s,</p>
-			<p>Your Email is %s</p>
-			<p>Your new password is %s</p>
-			<p>Regards,</p>
+			 Hello %s,\n
+			 Your Email is %s\n
+			 Your new password is %s\n
+			 Regards,\n
 			""" % (email, email, password)
 			mail = EmailMessage('Password Reset', body, 'Utibe Okodi <noreply@utibeokodi.com>', [email])
 			mail.content_subtype = "html"
 			mail.send()
 			return Response({'data':'Your Password has been changed succesfully'}, status = status.HTTP_200_OK)
-		if email is None or CustomUser.objects.filter(email=email).exists():
+		if email is None or CustomUser.objects.filter(email=email).exists() == False:
 			return Response({},status = status.HTTP_400_BAD_REQUEST)
 		
 		
