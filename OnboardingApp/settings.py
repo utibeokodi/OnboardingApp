@@ -148,6 +148,9 @@ CORS_ORIGIN_WHITELIST = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ALLOW_HEADERS = ('content-disposition', 'accept-encoding',
+                      'content-type', 'accept', 'origin', 'authorization')
+
 EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 
 MAILGUN_ACCESS_KEY = 'aa286e80a3cb06199e67b603da8d9919-8b34de1b-a5e8b91b'
